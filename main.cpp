@@ -8,7 +8,6 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <iostream>
-#include <conio.h>
 #include "GPU_Encode.h"
 #include "convert_colourspace.h"
 #include "PointGreyCam.h"
