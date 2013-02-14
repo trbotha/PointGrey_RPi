@@ -1,5 +1,5 @@
 /* Written by Theunis Richard Botha, South Africa, December 2012
-   You are free to use this for educational/non-commercial use*/
+You are free to use this for educational/non-commercial use*/
 
 #pragma once
 #ifndef __GPU_Encode_h
@@ -9,7 +9,7 @@
 #include <string>
 #include <time.h>
 extern "C" {
-  #include "bcm_host.h"
+	#include "bcm_host.h"
 	#include "ilclient.h"
 }
 
