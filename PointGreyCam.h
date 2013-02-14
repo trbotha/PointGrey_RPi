@@ -1,6 +1,5 @@
 /* Written by Theunis Richard Botha, South Africa, December 2012
-   You are free to use this for educational/non-commercial use*/
-
+You are free to use this for educational/non-commercial use*/
 #pragma once
 #ifndef __PointGreyCam_h
 #define __PointGreyCam_h
@@ -12,7 +11,12 @@
 #include <cstring>
 #include <iostream>
 #include <time.h>
+#include <unistd.h>
 using namespace std;
+
+struct CamSettings {
+  float shutter;
+} ;
 
 class PointGreyCam{
 
@@ -33,14 +37,20 @@ private:
     dc1394switch_t pwr;
     int NumCameras;
     bool start_cap;
+    bool software_trigger;
 public:
     PointGreyCam(void);
-  ~PointGreyCam(void);
-	int init(void);
-	int exit(void);
-	int setupcamera( dc1394video_mode_t video_mode);
-	int getFrames(dc1394video_frame_t ** &frames_);
-	int trigger_low(void);
-	int trigger_high(void);
+	~PointGreyCam(void);
+	int Init(void);
+	int Exit(void);
+	int SetupCamera( dc1394video_mode_t video_mode,dc1394trigger_mode_t trigger_mode, dc1394trigger_source_t trigger_source,dc1394framerate_t fps);
+	int SetupCamera( dc1394video_mode_t video_mode,dc1394trigger_mode_t trigger_mode, dc1394trigger_source_t trigger_source);
+	int SetTransmission(dc1394switch_t pwr);
+	int SetCameraSettings(CamSettings settings );
+	int PrintCameraSettings();
+	int GetFrames(dc1394video_frame_t ** &frames_);
+	int TriggerLow(void);
+	int TriggerHigh(void);
+	int SendTrigger(void);
 };
 #endif
